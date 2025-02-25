@@ -1,0 +1,44 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+body{
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: 13rem 1fr;
+    grid-template-rows: 6.25rem auto;
+}
+header{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    background-color: yellow;
+    grid-column-start: 1;
+    grid-column-end: 3;
+}
+aside{
+    background-color: aquamarine;
+}
+main{
+    background-color: blueviolet;
+    justify-content: center;
+    display: grid;
+    grid-template-columns: repeat(auto-fit,20rem);
+    gap: 2rem;
+    padding: 3rem 2rem;
+    align-content: center;
+    grid-template-rows: auto;
+}
+.card{
+    height: 250px;
+    background-color: orange;
+}
+.card:hover{
+    scale: 1.1;
+    background-color: black;
+    color: white;
+    border: 5px solid blue;
+    border-radius: 10px;
+}
