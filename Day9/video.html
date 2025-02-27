@@ -9,6 +9,14 @@
     <iframe width="560" height="315" src="" title="YouTube video player" frameborder="0"
         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
         referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+        <div class="comments-container">
+            <h2>Comments</h2>
+            <div class="comment-input">
+                <textarea id="comment-text" placeholder="Add a comment..."></textarea>
+                <button id="post-comment">Post</button>
+            </div>
+            <ul id="comment-list"></ul>
+        </div>    
     <script>
         const iframe=document.querySelector('iframe')
         const searchText=window.location.search
@@ -26,6 +34,36 @@
             newHistory.push(videoId)
             localStorage.setItem("yt_history",JSON.stringify(newHistory))
         }
+        const commentInput = document.getElementById('comment-text');
+        const postCommentBtn = document.getElementById('post-comment');
+        const commentList = document.getElementById('comment-list');
+
+        
+        const loadComments = () => {
+            const comments = JSON.parse(localStorage.getItem(`comments_${videoId}`)) || [];
+            commentList.innerHTML = "";
+            comments.forEach(comment => {
+                const li = document.createElement('li');
+                li.innerHTML = `<span class="user-icon">👤</span> <p>${comment}</p>`;
+                commentList.appendChild(li);
+            });
+        };
+
+       
+        postCommentBtn.addEventListener('click', () => {
+            const commentText = commentInput.value.trim();
+            if (commentText === "") return;
+
+            let comments = JSON.parse(localStorage.getItem(`comments_${videoId}`)) || [];
+            comments.push(commentText);
+            localStorage.setItem(`comments_${videoId}`, JSON.stringify(comments));
+
+            commentInput.value = "";
+            loadComments();
+        });
+
+        
+        loadComments();
     </script>
 </body>
 </html>
