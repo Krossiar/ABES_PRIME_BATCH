@@ -14,9 +14,12 @@ header{
     justify-content: center;
     align-items: center;
     gap: 1rem;
-    background-color: yellow;
+    background-color: white;
     grid-column-start: 1;
     grid-column-end: 3;
+}
+#logo{
+    margin-left: -1070px;
 }
 aside{
     background-color: aquamarine;
