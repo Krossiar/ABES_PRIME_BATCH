@@ -5718,26 +5718,54 @@ const dummyData=[
         "hasCaptions": false
     }
 ]
-const root=document.querySelector('main')
-const showUI=(list)=>{
-    list.forEach((obj,idx) => {
-        const newCard=document.createElement("div")
-        newCard.addEventListener('click',()=>{
-            window.open(`video.html?id=${obj.videoId}`,"_top")
+const root = document.querySelector("main");
+
+const showUI = (list) => {
+    root.innerHTML = ""; 
+    list.forEach((obj, idx) => {
+        const newCard = document.createElement("div");
+        newCard.addEventListener("click", () => {
+            window.open(`./video.html?id=${obj.videoId}`, "_top");
         });
-        newCard.className="card"
-        newCard.innerHTML= `
-            <img src='${obj.videoThumbnails[0].url}' width="100%" onmouseover='handleHover(event,${idx}'>
+        newCard.className = "card";
+        newCard.innerHTML = `
+            <img 
+                src='${obj.videoThumbnails[0].url}' 
+                width="100%" 
+                onmouseover='handleHover(event, ${idx})'
+            >
             <h6>${obj.author}</h6>
             <h4>${obj.title}</h4>
-        `
-        root.appendChild(newCard)
+        `;
+
+        root.appendChild(newCard);
     });
+};
 
+const handleHover = (e, idx) => {
+    // const lastImage = dummyData[idx].videoThumbnails.pop();
+    // e.target.src = lastImage.url;
+};
+
+showUI(dummyData);
+
+
+
+const handleSearch=(event) =>{
+    const search = event.target.value.toLowerCase().trim();
+    filter(search);
 }
-const handleHover=(e)=>{
-    //e.target.src=dummyData[idx].videoThumbnails.pop();
 
+const handleSearchButton=()=> {
+    const search = document.querySelector("#searches").value.toLowerCase().trim();
+    filter(search);
 }
 
-showUI(dummyData)
+const filter=(search)=>{
+    const filterData = dummyData.filter(video =>
+        video.title.toLowerCase().includes(search)
+    );
+    
+    showUI(filterData); 
+}
+
