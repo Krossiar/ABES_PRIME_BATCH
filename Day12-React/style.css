@@ -1,0 +1,26 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+.card{
+    margin: 1rem auto;
+    max-width: 400px;
+    background-color: lightcyan;
+    padding: 1rem;
+    border: 2px solid blue;
+    border-radius: 20px;
+}
+.card:hover{
+    max-width: 500px;
+    border: 2px solid whitesmoke;
+    border-radius: 20px;
+    transform: scale(1.1);
+
+}
+.submit{
+    background-color: red;
+}
+.danger{
+    background-color: blanchedalmond;
+}

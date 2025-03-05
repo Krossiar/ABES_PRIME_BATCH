@@ -9,6 +9,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "day11-react-app": "file:",
     "dom": "^0.0.3",
     "react": "^19.0.0"
   }
