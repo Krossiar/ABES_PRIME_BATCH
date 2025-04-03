@@ -1,0 +1,6 @@
+.card{
+    max-width: 25rem;
+    background-color: aliceblue;
+    border: 1px solid brown;
+    display: flex;
+}
