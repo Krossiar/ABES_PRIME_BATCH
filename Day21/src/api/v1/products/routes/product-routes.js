@@ -1,13 +1,10 @@
 const express=require("express")
+const {gerProductsController} =require("../controllers/getProductsController")
+const { postProductsController } = require("../controllers/postProductsController")
 //exports.productRouter=express.Router()
 const productRouter=express.Router()
-productRouter.get("/",(req,res)=>{
-    console.log("Request Received")
-    res.json({
-        status:"fail",
-        message:"Work in progress"
-    })
-})
+productRouter.get("/",gerProductsController)
+productRouter.post("/",postProductsController)
 module.exports={
     productRouter
 }

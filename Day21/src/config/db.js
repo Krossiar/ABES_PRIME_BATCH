@@ -1,7 +1,11 @@
 const mongoose=require("mongoose")
-mongoose.connect(
-    "mongodb+srv://vipinch211:Rohit%40332211@cluster0.ygmbpau.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0"
-).then(()=>{
+
+// const fs=require("fs")
+// const data=fs.readFileSync(".env","utf-8")
+// console.log("Data:",data)
+mongoose.connect(process.env.MONGO_DB_URL,{
+    dbName: "PRIME-ABES-22"
+}).then(()=>{
     console.log("----------DB Connection Connected---------=")
 }).catch((err)=>{
     console.log("------DB Connection Error------")
